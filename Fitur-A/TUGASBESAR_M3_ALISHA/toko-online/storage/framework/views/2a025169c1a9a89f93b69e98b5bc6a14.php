@@ -7,20 +7,10 @@
     <link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
 </head>
 <body>
-
-    <?php if(auth()->guard()->check()): ?>
     <nav>
-    <a href="<?php echo e(route('products.index')); ?>">Produk</a>
-    <?php if(auth()->user()->isAdmin()): ?>
+        <a href="<?php echo e(route('products.index')); ?>">Produk</a>
         <a href="<?php echo e(route('brands.index')); ?>">Merek</a>
-    <?php endif; ?>
-    <span><?php echo e(auth()->user()->name); ?> (<?php echo e(auth()->user()->role); ?>)</span>
-    <form action="<?php echo e(route('logout')); ?>" method="POST" style="display:inline">
-        <?php echo csrf_field(); ?>
-        <button type="submit" class="btn-delete">Keluar</button>
-    </form>
     </nav>
-    <?php endif; ?>
 
     <main>
         <div class="<?php echo $__env->yieldContent('wrapper', 'container'); ?>">
